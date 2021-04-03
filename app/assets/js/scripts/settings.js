@@ -1246,18 +1246,16 @@ function prepareJavaTab(){
  /**
   * Prepare account tab for display.
   */
- function prepareAboutTab(){
-     populateAboutVersionInformation()
-     populateReleaseNotes()
- }
- 
-
+  function prepareAboutTab(){
+    populateAboutVersionInformation()
+    populateReleaseNotes()
+}
 
 /**
  * Update Tab
  */
 
- const settingsTabUpdate            = document.getElementById('settingsTabUpdate')
+const settingsTabUpdate            = document.getElementById('settingsTabUpdate')
 const settingsUpdateTitle          = document.getElementById('settingsUpdateTitle')
 const settingsUpdateVersionCheck   = document.getElementById('settingsUpdateVersionCheck')
 const settingsUpdateVersionTitle   = document.getElementById('settingsUpdateVersionTitle')
@@ -1323,29 +1321,29 @@ function populateSettingsUpdateInformation(data){
 function prepareUpdateTab(data = null){
     populateSettingsUpdateInformation(data)
 }
- 
- /**
-  * Settings preparation functions.
+
+/**
+ * Settings preparation functions.
+ */
+
+/**
+  * Prepare the entire settings UI.
+  * 
+  * @param {boolean} first Whether or not it is the first load.
   */
- 
- /**
-   * Prepare the entire settings UI.
-   * 
-   * @param {boolean} first Whether or not it is the first load.
-   */
- function prepareSettings(first = false) {
-     if(first){
-         setupSettingsTabs()
-         initSettingsValidators()
-         prepareUpdateTab()
-     } else {
-         prepareModsTab()
-     }
-     initSettingsValues()
-     prepareAccountsTab()
-     prepareJavaTab()
-     prepareAboutTab()
- }
+function prepareSettings(first = false) {
+    if(first){
+        setupSettingsTabs()
+        initSettingsValidators()
+        prepareUpdateTab()
+    } else {
+        prepareModsTab()
+    }
+    initSettingsValues()
+    prepareAccountsTab()
+    prepareJavaTab()
+    prepareAboutTab()
+}
  
  // Prepare the settings UI on startup.
  //prepareSettings(true)
