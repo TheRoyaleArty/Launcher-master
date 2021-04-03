@@ -31,7 +31,7 @@ script:
         -v ${PWD}:/project \
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
-        electronuserland/builder:wine \
+        electronuserland/builder:latest \
         /bin/bash -c "node -v && npm ci && npm run cilinux"
     else
       npm run cidarwin
