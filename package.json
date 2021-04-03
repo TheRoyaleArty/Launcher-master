@@ -1,10 +1,6 @@
 {
   "name": "tryalliumlauncher",
-<<<<<<< HEAD
   "version": "1.0.4",
-=======
-  "version": "1.0.2",
->>>>>>> 182ff95794357a61e6ed65115e3591bfcebae8c6
   "productName": "Tryallium Launcher",
   "description": "launcher tryallium",
   "author": "Thearty",
