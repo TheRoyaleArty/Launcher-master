@@ -50,7 +50,7 @@ if(!isDev){
                 if(process.platform === 'darwin'){
                     //info.darwindownload = `https://github.com/dscalzi/HeliosLauncher/releases/download/v${info.version}/helioslauncher-setup-${info.version}.dmg`
                     //info.darwindownload = `http://tryallium.fr/tryallium-launcher/minecraft.jar`
-                    info.darwindownload = 'https://github.com/TheRoyaleArty/Launcher-master/releases/download/v${info.version}/Tryallium.Launcher-setup-${info.version}.exe'
+                    info.darwindownload = 'https://github.com/TheRoyaleArty/Launcher-master/releases/download/v${info.version}/Tryallium-Launcher-setup-${info.version}.exe'
                     showUpdateUI(info)
                 }
                 
