@@ -1,0 +1,497 @@
+{
+	"maintenance": {
+        "enabled": false,
+        "message": "Maintenance en cours.."
+    },
+	"versionMinimum": "0.0.01-d14",
+    "instances": [
+		{
+			"id": "paladium-v6.5",
+			"name": "Paladium V6.5",
+			"description": "Instance Paladium V6.5",
+			"version": "6.1.5",
+			"minecraftVersion": "1.7.10",
+			"mainInstance": true,
+			"modules": [
+				{
+					"id": "fr.paladium:palaforge:1.7.10-10.13.4.2512",
+                    "name": "Paladium Forge",
+                    "type": "ForgeHosted",
+                    "artifact": {
+                        "size": 5555186,
+                        "MD5": "b50d706aa7aa633d963dddce1ab25cb1",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/palaforge-1.7.10-10.13.4.2512.jar"
+                    },
+					"subModules": [
+						{
+							"id": "net.minecraft:launchwrapper:1.12",
+							"name": "Mojang (LaunchWrapper)",
+							"type": "Library",
+							"artifact": {
+								"size": 32999,
+								"MD5": "934b2d91c7c5be4a49577c9e6b40e8da",
+								"url": "https://libraries.minecraft.net/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar"
+							}
+						},
+						{
+							"id": "org.ow2.asm:asm-all:5.0.3",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 241639,
+								"MD5": "c5cc4613bbdfba3ccf5f0ab85390d0b8",
+								"url": "https://libraries.minecraft.net/org/ow2/asm/asm-all/5.0.3/asm-all-5.0.3.jar"
+							}
+						},
+						{
+							"id": "com.typesafe.akka:akka-actor_2.11:2.3.3",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 2553197,
+								"MD5": "72553b9b2c93cce5b6a0a02d4dce9ac5",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/akka-actor_2.11-2.3.3.jar"
+							}
+						},
+						{
+							"id": "com.typesafe:config:1.2.1",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 2553197,
+								"MD5": "72553b9b2c93cce5b6a0a02d4dce9ac5",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/akka-actor_2.11-2.3.3.jar"
+							}
+						},
+						{
+							"id": "org.scala-lang:scala-actors-migration_2.11:1.1.0",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 58767,
+								"MD5": "7f7b169667d14b3092a285badf9487f7",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/scala-actors-migration_2.11-1.1.0.jar"
+							}
+						},
+						{
+							"id": "org.scala-lang:scala-compiler:2.11.1",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 13576400,
+								"MD5": "d9fc987043fcf8c25d0f73bc7ca36a47",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/scala-compiler-2.11.1.jar"
+							}
+						},
+						{
+							"id": "org.scala-lang.plugins:scala-continuations-library_2.11:1.0.2",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 26551,
+								"MD5": "f2a6b8fb8451839efb670d03dfd79ebd",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/scala-continuations-library_2.11-1.0.2.jar"
+							}
+						},
+						{
+							"id": "org.scala-lang.plugins:scala-continuations-plugin_2.11.1:1.0.2",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 209882,
+								"MD5": "40e725b6f9da3a52e6adffd94abb8290",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/scala-continuations-plugin_2.11.1-1.0.2.jar"
+							}
+						},
+						{
+							"id": "org.scala-lang:scala-library:2.11.1",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 5612286,
+								"MD5": "6f9208af82f7c2811a6c0de049cfe279",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/scala-library-2.11.1.jar"
+							}
+						},
+						{
+							"id": "org.scala-lang:scala-parser-combinators_2.11:1.0.1",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 430247,
+								"MD5": "fe20384e064dd025e144bee2858abf1a",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/scala-parser-combinators_2.11-1.0.1.jar"
+							}
+						},
+						{
+							"id": "org.scala-lang:scala-reflect:2.11.1",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 4415437,
+								"MD5": "08b829b97a4258421b7e5c902b8a08ac",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/scala-reflect-2.11.1.jar"
+							}
+						},
+						{
+							"id": "org.scala-lang:scala-swing_2.11:1.0.1",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 736831,
+								"MD5": "5d8c98094f1ae58184ed2e087fca7c44",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/scala-swing_2.11-1.0.1.jar"
+							}
+						},
+						{
+							"id": "org.scala-lang:scala-xml_2.11:1.0.2",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 660552,
+								"MD5": "a54ca733ef0ede9c343f1ce9ed0b527c",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/scala-xml_2.11-1.0.2.jar"
+							}
+						},
+						{
+							"id": "lzma:lzma:0.0.1",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 5762,
+								"MD5": "a3e3c3186e41c4a1a3027ba2bb23cdc6",
+								"url": "https://libraries.minecraft.net/lzma/lzma/0.0.1/lzma-0.0.1.jar"
+							}
+						},
+						{
+							"id": "net.sf.jopt-simple:jopt-simple:4.5",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 61311,
+								"MD5": "1372bd4823bb1ef61e7db6724f601150",
+								"url": "https://libraries.minecraft.net/net/sf/jopt-simple/jopt-simple/4.5/jopt-simple-4.5.jar"
+							}
+						},
+						{
+							"id": "com.google.guava:guava:17.0",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 2243036,
+								"MD5": "89fef81c2adfa9b50a64ed5cd5d8c155",
+								"url": "https://libraries.minecraft.net/com/google/guava/guava/17.0/guava-17.0.jar"
+							}
+						},
+						{
+							"id": "org.apache.commons:commons-lang3:3.3.2",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 412739,
+								"MD5": "3128bf75a2549ebe38663401191bacab",
+								"url": "https://libraries.minecraft.net/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar"
+							}
+						}
+					]
+				},
+				{
+                    "id": "fr.paladium:palamod:prod",
+                    "name": "PalaMod",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 62176672,
+                        "MD5": "b6ddcd6b40909c76e89de3971c39de3f",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/palamod-prod.pala"
+                    },
+					"subModules": [
+						{
+							"id": "com.sun.jna:discord-rpc:2.0.1",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 1706638,
+								"MD5": "92343e46f9dab69c143c283c856f2eb3",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/discord-rpc-2.0.1.jar"
+							}
+						},
+						{
+							"id": "org.json.simple:json-simple:1.1.1",
+							"name": "Mojang (ASM)",
+							"type": "Library",
+							"artifact": {
+								"size": 23931,
+								"MD5": "5cc2c478d73e8454b4c369cee66c5bc7",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/json-simple-1.1.1.jar"
+							}
+						},
+						{
+							"id": "unirest.shaded.org.apache.http:unirest-java:3.1.04",
+							"name": "Unirest Java",
+							"type": "Library",
+							"artifact": {
+								"size": 2500958,
+								"MD5": "b037ced8d7f32a7936dbabdf3069b928",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/unirest-java-3.1.04.jar"
+							}
+						},
+						{
+							"id": "fr.paladium.sephira.api:sephira-api:1.0.0",
+							"name": "Paladium-Sephira",
+							"type": "Library",
+							"artifact": {
+								"size": 2271618,
+								"MD5": "c5c40ba050a7541b99610349348118b2",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/libraries/sephira-api-1.0.0.jar"
+							}
+						}
+					]
+                },
+				{
+                    "id": "fr.welsy:palatrade:prod",
+                    "name": "PalaTrade",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 289936,
+                        "MD5": "31a0f61791d1131ca24491fe1e29dde1",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/palatrade-prod.pala"
+                    }
+                },
+				{
+                    "id": "fr.welsy:decodium:prod",
+                    "name": "Decodium",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 7330288,
+                        "MD5": "ef46d256bbb1fcfb3ff1f8c5a28a5003",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/decodium-prod.pala"
+                    }
+                },
+				{
+                    "id": "fr.welsy:guardiangolem:prod",
+                    "name": "Guardiangolem",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 427216,
+                        "MD5": "81f8215300fb5e6fab1eaff72c8ec715",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/guardiangolem-prod.pala"
+                    }
+                },
+				{
+                    "id": "com.carpentersblocks:carpentersblocks:prod",
+                    "name": "CarpenterBlocks",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 439904,
+                        "MD5": "f56d03613c072c32e7ed01c2d0828923",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/carpentersblocks-prod.pala"
+                    }
+                },
+				{
+                    "id": "noppes.npcs:customnpcs:prod",
+                    "name": "CustomNpcs",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 8972992,
+                        "MD5": "949cd240fdd7cd5f418acc5c186488ad",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/customnpcs-prod.pala"
+                    }
+                },
+				{
+                    "id": "cpw.mods.ironchest:ironchest:prod",
+                    "name": "IronChest",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 4196320,
+                        "MD5": "bad2354ab452694a64b08fd1382faeff",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/ironchest-prod.pala"
+                    }
+                },
+				{
+                    "id": "codechicken.notenoughitems:notenoughitems:prod",
+                    "name": "NotEnoughItems",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 507344,
+                        "MD5": "8e9a293430508aef4834860f5a238373",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/notenoughitems-prod.pala"
+                    },
+					"subModules": [
+						{
+							"id": "codechicken.codechickencore:codechickencore:prod",
+							"name": "CodeChickenCoreJar",
+							"type": "ForgeMod",
+							"artifact": {
+								"size": 157678,
+								"MD5": "23978d3c16f19d0d2808c4b451d78f87",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/codechickencore-prod.jar"
+							}
+						},
+						{
+							"id": "codechicken.codechickencore:codechickencore:prod",
+							"name": "CodeChickenCore",
+							"type": "PalaMod",
+							"artifact": {
+								"size": 157680,
+								"MD5": "ac9f16a5f20617985e18f8f3656018e3",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/codechickencore-prod.pala"
+							}
+						},
+						{
+							"id": "codechicken.codechickenlib:codechickenlib:1.0.4.29",
+							"name": "CodeChickenLib",
+							"type": "File",
+							"artifact": {
+								"size": 299187,
+								"MD5": "a9043228d7d6fc52a7cb0d1d20922ce1",
+								"path": "mods/1.7.10/CodeChickenLib-1.7.10-1.1.1.99-universal.jar",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/files/codechickenlib-1.1.1.99.jar"
+							}
+						}
+					]
+                },
+				{
+                    "id": "com.github.abrarsyed.secretroomsmod:secretroomsmod:prod",
+                    "name": "SecretRooms",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 149120,
+                        "MD5": "19ba503177c0471a34ff742df83da5bd",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/secretroomsmod-prod.pala"
+                    }
+                },
+				{
+                    "id": "com.jaquadro.minecraft.storagedrawers:storagedrawers:prod",
+                    "name": "StorageDrawers",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 585728,
+                        "MD5": "dadd9b39c91599f31df2974e17b6746c",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/storagedrawers-prod.pala"
+                    }
+                },
+				{
+                    "id": "fr.romain120105:palashopclient:prod",
+                    "name": "PalaShopClient",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 46144,
+                        "MD5": "d2d087b4947c7088f5bac5d18d5712b6",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/palashopclient-prod.pala"
+                    }
+                },
+				{
+                    "id": "net.optifine:optifine:prod",
+                    "name": "OptiFine",
+                    "type": "PalaMod",
+                    "artifact": {
+                        "size": 1774176,
+                        "MD5": "9c7228521e8fb3a999e0089a350077ef",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/mods/optifine-prod.pala"
+                    },
+					"subModules": [
+						{
+							"id": "chocapic13:chocapic13:v6-lite",
+							"name": "Chocapic13 V6 Lite",
+							"type": "File",
+							"artifact": {
+								"size": 148075,
+								"MD5": "774206db2d590426746022da8386cb94",
+								"path": "shaderpacks/Chocapic13_V6_Lite.zip",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/files/shaderpacks/chocapic13-v6-lite.zip"
+							}
+						},
+						{
+							"id": "chocapic13:chocapic13:v6-low",
+							"name": "Chocapic13 V6 Low",
+							"type": "File",
+							"artifact": {
+								"size": 148108,
+								"MD5": "9a6db4ef558981e924b3576ca9d14222",
+								"path": "shaderpacks/Chocapic13_V6_Low.zip",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/files/shaderpacks/chocapic13-v6-low.zip"
+							}
+						},
+						{
+							"id": "chocapic13:chocapic13:v6-medium",
+							"name": "Chocapic13 V6 Medium",
+							"type": "File",
+							"artifact": {
+								"size": 168721,
+								"MD5": "e31d115bab03bc3cace8f69e9aa9a13c",
+								"path": "shaderpacks/Chocapic13_V6_Medium.zip",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/files/shaderpacks/chocapic13-v6-medium.zip"
+							}
+						},
+						{
+							"id": "chocapic13:chocapic13:v6-high",
+							"name": "Chocapic13 V6 High",
+							"type": "File",
+							"artifact": {
+								"size": 178101,
+								"MD5": "d23305c63353fb7914e62afb485b8587",
+								"path": "shaderpacks/Chocapic13_V6_High.zip",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/files/shaderpacks/chocapic13-v6-high.zip"
+							}
+						},
+						{
+							"id": "chocapic13:chocapic13:v6-ultra",
+							"name": "Chocapic13 V6 Ultra",
+							"type": "File",
+							"artifact": {
+								"size": 196912,
+								"MD5": "8443d462d088607b1950bb03b59788f6",
+								"path": "shaderpacks/Chocapic13_V6_Ultra.zip",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/files/shaderpacks/chocapic13-v6-ultra.zip"
+							}
+						},
+						{
+							"id": "chocapic13:chocapic13:v6-extreme",
+							"name": "Chocapic13 V6 Extreme",
+							"type": "File",
+							"artifact": {
+								"size": 196835,
+								"MD5": "777579993be3736f48866e3c689ebb1f",
+								"path": "shaderpacks/Chocapic13_V6_Extreme.zip",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/files/shaderpacks/chocapic13-v6-extreme.zip"
+							}
+						},
+						{
+							"id": "chocapic13:chocapic13:v6-extreme",
+							"name": "Chocapic13 V6 Extreme",
+							"type": "File",
+							"artifact": {
+								"size": 196835,
+								"MD5": "777579993be3736f48866e3c689ebb1f",
+								"path": "shaderpacks/Chocapic13_V6_Extreme.zip",
+								"url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/files/shaderpacks/chocapic13-v6-extreme.zip"
+							}
+						}
+					]
+                },
+				{
+                    "id": "fr.paladium:faithfull:2019-07-06",
+                    "name": "Faithfull Paladium Officiel",
+                    "type": "File",
+                    "artifact": {
+                        "size": 7311205,
+                        "MD5": "797bd8253c6ac07b8af9ca856f590419",
+						"path": "resourcepacks/Faithfull_Paladium_Officiel.zip",
+                        "url": "http://download.paladium-pvp.fr/launcher/beta-version/paladium-v6/files/faithfull_paladium_officiel.zip"
+                    }
+                }
+			],
+			"ignored": [
+				{
+                    "path": "options.txt"
+                },
+				{
+                    "path": "optionsof.txt"
+                },
+				{
+					"path": "optionsshaders.txt"
+				}
+			]
+		}
+	]
+}

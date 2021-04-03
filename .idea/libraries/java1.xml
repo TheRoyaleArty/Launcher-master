@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="java1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/win-unpacked/resources/libraries/java/PackXZExtract.jar!/" />
+      <root url="jar://$PROJECT_DIR$/dist/win-unpacked/resources/libraries/java/s-update-3.1.0-BETA.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
