@@ -1,8 +1,8 @@
-version: 1.9.2
+version: 1.7.4
 files:
-  - url: Tryallium-Launcher-setup-1.9.2.exe
-    sha512: byIv6o//IsOKfmXLa9iucpNVUJ+XMGIm/RXS9hR9C4gpqVprb4MX61+uvwMdVMR2u1mmpz9h9irD9M7OzFSsIw==
-    size: 73801633
-path: Tryallium-Launcher-setup-1.9.2.exe
-sha512: byIv6o//IsOKfmXLa9iucpNVUJ+XMGIm/RXS9hR9C4gpqVprb4MX61+uvwMdVMR2u1mmpz9h9irD9M7OzFSsIw==
-releaseDate: '2021-04-04T14:06:51.739Z'
+  - url: Tryallium-Launcher-setup-1.7.4.exe
+    sha512: JoKjmBnCwLShUVPTTJ77ivwU1Ih9GDfhxqWQo/dkBGUVFRo2k94JY2KlYm724PmrfiJzeXdvBiKtO7kmNNbDnw==
+    size: 73806165
+path: Tryallium-Launcher-setup-1.7.4.exe
+sha512: JoKjmBnCwLShUVPTTJ77ivwU1Ih9GDfhxqWQo/dkBGUVFRo2k94JY2KlYm724PmrfiJzeXdvBiKtO7kmNNbDnw==
+releaseDate: '2021-04-04T15:40:47.481Z'

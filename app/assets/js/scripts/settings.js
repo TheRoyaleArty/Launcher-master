@@ -1221,6 +1221,7 @@ function populateAboutVersionInformation(){
 function populateReleaseNotes(){
     $.ajax({
         url: 'https://github.com/TheRoyaleArty/Launcher-master/releases.atom',
+          //url: 'https://github.com/dscalzi/HeliosLauncher/releases.atom',
         success: (data) => {
             const version = 'v' + remote.app.getVersion()
             const entries = $(data).find('entry')

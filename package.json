@@ -1,6 +1,6 @@
 {
   "name": "tryalliumlauncher",
-  "version": "1.9.5",
+  "version": "1.7.4",
   "productName": "Tryallium Launcher",
   "description": "launcher tryallium",
   "author": "Thearty",
@@ -47,5 +47,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheRoyaleArty/Launcher-master.git"
+    
   }
 }
