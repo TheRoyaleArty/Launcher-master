@@ -17,7 +17,7 @@ const minecraftAgent = {
 const authpath = 'https://authserver.mojang.com'
 const statuses = [
     {
-        service: 'sessionserver.mojang.com',
+        service: 'session.minecraft.net',
         status: 'grey',
         name: 'Multiplayer Session Service',
         essential: true
@@ -210,7 +210,7 @@ exports.validate = function(accessToken, clientToken){
  */
 exports.invalidate = function(accessToken, clientToken){
     return new Promise((resolve, reject) => {
-        request.post(authpath + '/invalidae',
+        request.post(authpath + '/invalidate',
             {
                 json: true,
                 body: {

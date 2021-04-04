@@ -3,7 +3,7 @@ directories:
   buildResources: build
 appId: Tryallium Launcher
 productName: Tryallium Launcher
-artifactName: '${productName}-setup-${version}.${ext}'
+artifactName: ${productName}-setup-${version}.${ext}
 copyright: Copyright © 2018-2020 Thearty
 win:
   target:
@@ -22,7 +22,7 @@ linux:
   maintainer: Thearty
   vendor: Thearty
   synopsis: Launcher Pour Le Server Tryallium
-  description: 'Custom launcher which allows users to join modded servers. All mods, configurations, and updates are handled automatically.'
+  description: Custom launcher which allows users to join modded servers. All mods, configurations, and updates are handled automatically.
   category: Game
 compression: maximum
 files:
@@ -32,4 +32,4 @@ extraResources:
   - filter:
       - libraries
 asar: true
-electronVersion: 9.0.2
+electronVersion: 12.0.2

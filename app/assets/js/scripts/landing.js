@@ -130,7 +130,7 @@ function updateSelectedAccount(authUser){
             username = authUser.displayName
         }
         if(authUser.uuid != null){
-            document.getElementById('avatarContainer').style.backgroundImage = `url('https://www.mc-heads.net/body/${authUser.uuid}')`
+            document.getElementById('avatarContainer').style.backgroundImage = `url('https://crafatar.com/renders/body/${authUser.uuid}')`
         }
     }
     user_text.innerHTML = username
@@ -216,15 +216,15 @@ const refreshMojangStatuses = async function(){
     document.getElementById('mojang_status_icon').style.color = Mojang.statusToHex(status)
 }
 
-const refreshServerStatus = async function(fade = true){
-    loggerLanding.log('actualisation du status du serveur')
+const refreshServerStatus = async function(fade = false){
+    loggerLanding.log('Refreshing Server Status')
     const serv = DistroManager.getDistribution().getServer(ConfigManager.getSelectedServer())
 
     let pLabel = 'SERVER'
-    let pVal = 'ONLINE'
+    let pVal = 'OFFLINE'
 
     try {
-        const serverURL = new URL('' + serv.getAddress())
+        const serverURL = new URL('my://' + serv.getAddress())
         const servStat = await ServerStatus.getStatus(serverURL.hostname, serverURL.port)
         if(servStat.online){
             pLabel = 'PLAYERS'
@@ -463,11 +463,12 @@ function asyncSystemScan(mcVersion, launchAfter = true){
 // Keep reference to Minecraft Process
 let proc
 // Is DiscordRPC enabled
-let hasRPC = true
+let hasRPC = false
 // Joined server regex
-const SERVER_JOINED_REGEX = /\[.+\]: \[CHAT\] [a-zA-Z0-9_]{1,16} joined the game/
-const GAME_JOINED_REGEX = /\[.+\]: Skipping bad option: lastServer:/
-const GAME_LAUNCH_REGEX = /^\[.+\]: MinecraftForge .+ Initialized$/
+// Change this if your server uses something different.
+const GAME_JOINED_REGEX = /\[.+\]: Sound engine started/
+const GAME_LAUNCH_REGEX = /^\[.+\]: (?:MinecraftForge .+ Initialized|ModLauncher .+ starting: .+)$/
+const MIN_LINGER = 5000
 
 let aEx
 let serv
@@ -630,9 +631,9 @@ function dlAsync(login = true){
 
             // If these properties are not defined it's likely an error.
             if(m.result.forgeData == null || m.result.versionData == null){
-                loggerLaunchSuite.error('Erreur pendant la verification', m.result)
+                loggerLaunchSuite.error('Error during validation:', m.result)
 
-                loggerLaunchSuite.error('Erreur pendant le lancement', m.result.error)
+                loggerLaunchSuite.error('Error during launch', m.result.error)
                 showLaunchFailure('Error During Launch', 'Please check the console (CTRL + Shift + i) for more details.')
 
                 allGood = false
@@ -647,19 +648,32 @@ function dlAsync(login = true){
                 let pb = new ProcessBuilder(serv, versionData, forgeData, authUser, remote.app.getVersion())
                 setLaunchDetails('Launching game..')
 
+                // const SERVER_JOINED_REGEX = /\[.+\]: \[CHAT\] [a-zA-Z0-9_]{1,16} joined the game/
+                const SERVER_JOINED_REGEX = new RegExp(`\\[.+\\]: \\[CHAT\\] ${authUser.displayName} joined the game`)
+
+                const onLoadComplete = () => {
+                    toggleLaunchArea(false)
+                    if(hasRPC){
+                        DiscordWrapper.updateDetails('Loading game..')
+                    }
+                    proc.stdout.on('data', gameStateChange)
+                    proc.stdout.removeListener('data', tempListener)
+                    proc.stderr.removeListener('data', gameErrorListener)
+                }
+                const start = Date.now()
+
                 // Attach a temporary listener to the client output.
                 // Will wait for a certain bit of text meaning that
                 // the client application has started, and we can hide
                 // the progress bar stuff.
                 const tempListener = function(data){
                     if(GAME_LAUNCH_REGEX.test(data.trim())){
-                        toggleLaunchArea(false)
-                        if(hasRPC){
-                            DiscordWrapper.updateDetails('Lance le jeu..')
+                        const diff = Date.now()-start
+                        if(diff < MIN_LINGER) {
+                            setTimeout(onLoadComplete, MIN_LINGER-diff)
+                        } else {
+                            onLoadComplete()
                         }
-                        proc.stdout.on('data', gameStateChange)
-                        proc.stdout.removeListener('data', tempListener)
-                        proc.stderr.removeListener('data', gameErrorListener)
                     }
                 }
 
@@ -667,10 +681,9 @@ function dlAsync(login = true){
                 const gameStateChange = function(data){
                     data = data.trim()
                     if(SERVER_JOINED_REGEX.test(data)){
-                        DiscordWrapper.updateDetails('Explore un Realms')
+                        DiscordWrapper.updateDetails('Exploring the Realm!')
                     } else if(GAME_JOINED_REGEX.test(data)){
-                        DiscordWrapper.updateDetails('Dans le serveur')
-                        
+                        DiscordWrapper.updateDetails('Sailing to Westeros!')
                     }
                 }
 

@@ -23,6 +23,7 @@ class ProcessBuilder {
         this.forgeData = forgeData
         this.authUser = authUser
         this.launcherVersion = launcherVersion
+        this.forgeModListFile = path.join(this.gameDir, 'forgeMods.list') // 1.13+
         this.fmlDir = path.join(this.gameDir, 'forgeModList.json')
         this.llDir = path.join(this.gameDir, 'liteloaderModList.json')
         this.libPath = path.join(this.commonDir, 'libraries')
@@ -44,9 +45,9 @@ class ProcessBuilder {
         
         // Mod list below 1.13
         if(!Util.mcVersionAtLeast('1.13', this.server.getMinecraftVersion())){
-            this.constructModList('forge', modObj.fMods, true)
+            this.constructJSONModList('forge', modObj.fMods, true)
             if(this.usingLiteLoader){
-                this.constructModList('liteloader', modObj.lMods, true)
+                this.constructJSONModList('liteloader', modObj.lMods, true)
             }
         }
         
@@ -54,7 +55,8 @@ class ProcessBuilder {
         let args = this.constructJVMArguments(uberModArr, tempNativePath)
 
         if(Util.mcVersionAtLeast('1.13', this.server.getMinecraftVersion())){
-            args = args.concat(this.constructModArguments(modObj.fMods))
+            //args = args.concat(this.constructModArguments(modObj.fMods))
+            args = args.concat(this.constructModList(modObj.fMods))
         }
 
         logger.log('Launch Arguments:', args)
@@ -184,8 +186,8 @@ class ProcessBuilder {
         }
     }
 
-    _isBelowOneDotSeven() {
-        return Number(this.forgeData.id.split('-')[0].split('.')[1]) <= 7
+    _lteMinorVersion(version) {
+        return Number(this.forgeData.id.split('-')[0].split('.')[1]) <= Number(version)
     }
 
     /**
@@ -194,7 +196,7 @@ class ProcessBuilder {
      */
     _requiresAbsolute(){
         try {
-            if(this._isBelowOneDotSeven()) {
+            if(this._lteMinorVersion(9)) {
                 return false
             }
             const ver = this.forgeData.id.split('-')[2]
@@ -224,7 +226,7 @@ class ProcessBuilder {
      * @param {Array.<Object>} mods An array of mods to add to the mod list.
      * @param {boolean} save Optional. Whether or not we should save the mod list file.
      */
-    constructModList(type, mods, save = false){
+    constructJSONModList(type, mods, save = false){
         const modList = {
             repositoryRoot: ((type === 'forge' && this._requiresAbsolute()) ? 'absolute:' : '') + path.join(this.commonDir, 'modstore')
         }
@@ -249,27 +251,63 @@ class ProcessBuilder {
         return modList
     }
 
+    // /**
+    //  * Construct the mod argument list for forge 1.13
+    //  * 
+    //  * @param {Array.<Object>} mods An array of mods to add to the mod list.
+    //  */
+    // constructModArguments(mods){
+    //     const argStr = mods.map(mod => {
+    //         return mod.getExtensionlessID()
+    //     }).join(',')
+
+    //     if(argStr){
+    //         return [
+    //             '--fml.mavenRoots',
+    //             path.join('..', '..', 'common', 'modstore'),
+    //             '--fml.mods',
+    //             argStr
+    //         ]
+    //     } else {
+    //         return []
+    //     }
+        
+    // }
+
     /**
      * Construct the mod argument list for forge 1.13
      * 
      * @param {Array.<Object>} mods An array of mods to add to the mod list.
      */
-    constructModArguments(mods){
-        const argStr = mods.map(mod => {
+    constructModList(mods) {
+        const writeBuffer = mods.map(mod => {
             return mod.getExtensionlessID()
-        }).join(',')
+        }).join('\n')
 
-        if(argStr){
+        if(writeBuffer) {
+            fs.writeFileSync(this.forgeModListFile, writeBuffer, 'UTF-8')
             return [
                 '--fml.mavenRoots',
                 path.join('..', '..', 'common', 'modstore'),
-                '--fml.mods',
-                argStr
+                '--fml.modLists',
+                this.forgeModListFile
             ]
         } else {
             return []
         }
-        
+
+    }
+
+    _processAutoConnectArg(args){
+        if(ConfigManager.getAutoConnect() && this.server.isAutoConnect()){
+            const serverURL = new URL('my://' + this.server.getAddress())
+            args.push('--server')
+            args.push(serverURL.hostname)
+            if(serverURL.port){
+                args.push('--port')
+                args.push(serverURL.port)
+            }
+        }
     }
 
     /**
@@ -377,7 +415,7 @@ class ProcessBuilder {
                         // This should be fine for a while.
                         if(rule.features.has_custom_resolution != null && rule.features.has_custom_resolution === true){
                             if(ConfigManager.getFullscreen()){
-                                rule.values = [
+                                args[i].value = [
                                     '--fullscreen',
                                     'true'
                                 ]
@@ -461,6 +499,24 @@ class ProcessBuilder {
             }
         }
 
+        // Autoconnect
+        let isAutoconnectBroken
+        try {
+            isAutoconnectBroken = Util.isAutoconnectBroken(this.forgeData.id.split('-')[2])
+        } catch(err) {
+            logger.error(err)
+            logger.error('Forge version format changed.. assuming autoconnect works.')
+            logger.debug('Forge version:', this.forgeData.id)
+        }
+
+        if(isAutoconnectBroken) {
+            logger.error('Server autoconnect disabled on Forge 1.15.2 for builds earlier than 31.2.15 due to OpenGL Stack Overflow issue.')
+            logger.error('Please upgrade your Forge version to at least 31.2.15!')
+        } else {
+            this._processAutoConnectArg(args)
+        }
+        
+
         // Forge Specific Arguments
         args = args.concat(this.forgeData.arguments.game)
 
@@ -526,15 +582,7 @@ class ProcessBuilder {
         }
 
         // Autoconnect to the selected server.
-        if(ConfigManager.getAutoConnect() && this.server.isAutoConnect()){
-            const serverURL = new URL('my://' + this.server.getAddress())
-            mcArgs.push('--server')
-            mcArgs.push(serverURL.hostname)
-            if(serverURL.port){
-                mcArgs.push('--port')
-                mcArgs.push(serverURL.port)
-            }
-        }
+        this._processAutoConnectArg(mcArgs)
 
         // Prepare game resolution
         if(ConfigManager.getFullscreen()){
@@ -549,7 +597,7 @@ class ProcessBuilder {
         
         // Mod List File Argument
         mcArgs.push('--modListFile')
-        if(this._isBelowOneDotSeven()) {
+        if(this._lteMinorVersion(9)) {
             mcArgs.push(path.basename(this.fmlDir))
         } else {
             mcArgs.push('absolute:' + this.fmlDir)

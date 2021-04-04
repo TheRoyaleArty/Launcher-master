@@ -1,7 +1,4 @@
 // Work in progress
-
-
-
 const logger = require('./loggerutil')('%c[DiscordWrapper]', 'color: #7289da; font-weight: bold')
 
 const {Client} = require('discord-rpc')
@@ -9,35 +6,19 @@ const {Client} = require('discord-rpc')
 let client
 let activity
 
-
-exports.initRPC = function(genSettings, servSettings, initialDetails = 'Dans le launcher'){
+exports.initRPC = function(genSettings, servSettings, initialDetails = 'Waiting for Client..'){
     client = new Client({ transport: 'ipc' })
 
     activity = {
         details: initialDetails,
         state: 'Server: ' + servSettings.shortId,
-        largeImageKey: servSettings.largeImageKey, 
+        largeImageKey: servSettings.largeImageKey,
         largeImageText: servSettings.largeImageText,
         smallImageKey: genSettings.smallImageKey,
         smallImageText: genSettings.smallImageText,
         startTimestamp: new Date().getTime(),
-        instance: true,
-        buttons: [{label : "Button1" , url : "Link1"},{label : "Button2",url : "Link2"}],
-       // client.login({ clientId : "825389450934222898" }).catch(console.error),
-        
+        instance: false
     }
-
-   /* activity = {
-        details: "Your Text Here",
-        assets: {
-        large_image: "Image",
-        large_text: "Your Status" // THIS WILL SHOW AS "Playing <Status>" from the outisde
-        },
-        buttons : [{label : "Button1" , url : "Link1"},{label : "Button2",url : "Link2"}]
-        }
-        client.login({ clientId : "825389450934222898" }).catch(console.error);
-
-    }*/
 
     client.on('ready', () => {
         logger.log('Discord RPC Connected')
@@ -62,6 +43,6 @@ exports.shutdownRPC = function(){
     if(!client) return
     client.clearActivity()
     client.destroy()
-    client = false
-    activity = false
+    client = null
+    activity = null
 }
