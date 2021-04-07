@@ -185,7 +185,7 @@ class Module {
                 break
             case exports.Types.ForgeMod:
             case exports.Types.LiteMod:
-                this.artifact.path = path.join(ConfigManager.getCommonDirectory(), 'modstore', pth)
+                this.artifact.path = path.join(ConfigManager.getCommonDirectory(), 'mods', pth)
                 break
             case exports.Types.VersionManifest:
                 this.artifact.path = path.join(ConfigManager.getCommonDirectory(), 'versions', this.getIdentifier(), `${this.getIdentifier()}.json`)
