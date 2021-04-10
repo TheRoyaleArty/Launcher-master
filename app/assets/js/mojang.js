@@ -255,6 +255,7 @@ exports.refresh = function(accessToken, clientToken, requestUser = true){
                     requestUser
                 }
             },
+            
             function(error, response, body){
                 if(error){
                     logger.error('Error during refresh.', error)
