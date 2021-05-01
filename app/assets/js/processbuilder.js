@@ -228,7 +228,7 @@ class ProcessBuilder {
      */
     constructJSONModList(type, mods, save = false){
         const modList = {
-            repositoryRoot: ((type === 'forge' && this._requiresAbsolute()) ? 'absolute:' : '') + path.join(this.commonDir, 'modstore')
+            repositoryRoot: ((type === 'forge' && this._requiresAbsolute()) ? 'absolute:' : '') + path.join(this.commonDir, 'mods')
         }
 
         const ids = []
@@ -288,7 +288,7 @@ class ProcessBuilder {
             fs.writeFileSync(this.forgeModListFile, writeBuffer, 'UTF-8')
             return [
                 '--fml.mavenRoots',
-                path.join('..', '..', 'common', 'modstore'),
+                path.join('..', '..', 'common', 'mods'),
                 '--fml.modLists',
                 this.forgeModListFile
             ]
